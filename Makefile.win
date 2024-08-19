@@ -1,0 +1,39 @@
+# Project: Shutos
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = Shutos_private.res
+OBJ  = Shutos.o ShutosDlg.o StdAfx.o $(RES)
+LINKOBJ  = Shutos.o ShutosDlg.o StdAfx.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -mwindows  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = Shutos.exe
+CXXFLAGS = $(CXXINCS) -D__GNUWIN32__ -W -DWIN32 -DNDEBUG -D_WINDOWS -D_AFXDLL -D_MBCS 
+CFLAGS = $(INCS) -D__GNUWIN32__ -W -DWIN32 -DNDEBUG -D_WINDOWS -D_AFXDLL -D_MBCS 
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Shutos.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Shutos.exe" $(LIBS)
+
+Shutos.o: Shutos.cpp
+	$(CPP) -c Shutos.cpp -o Shutos.o $(CXXFLAGS)
+
+ShutosDlg.o: ShutosDlg.cpp
+	$(CPP) -c ShutosDlg.cpp -o ShutosDlg.o $(CXXFLAGS)
+
+StdAfx.o: StdAfx.cpp
+	$(CPP) -c StdAfx.cpp -o StdAfx.o $(CXXFLAGS)
+
+Shutos_private.res: Shutos_private.rc Shutos.rc 
+	$(WINDRES) -i Shutos_private.rc --input-format=rc -o Shutos_private.res -O coff 

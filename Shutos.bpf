@@ -1,0 +1,7 @@
+USEUNIT(".\Shutos.cpp");
+USEUNIT(".\ShutosDlg.cpp");
+USEUNIT(".\StdAfx.cpp");
+USERC(".\Shutos.rc");
+USEFILE("vctobpr.log");
+
+#define WinMain
